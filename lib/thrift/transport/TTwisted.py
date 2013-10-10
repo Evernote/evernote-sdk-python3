@@ -17,7 +17,7 @@
 # under the License.
 #
 
-from cStringIO import StringIO
+from io import StringIO
 
 from zope.interface import implements, Interface, Attribute
 from twisted.internet.protocol import Protocol, ServerFactory, ClientFactory, \
@@ -81,7 +81,7 @@ class ThriftClientProtocol(basic.Int32StringReceiver):
         self.started.callback(self.client)
 
     def connectionLost(self, reason=connectionDone):
-        for k, v in self.client._reqs.iteritems():
+        for k, v in self.client._reqs.items():
             tex = TTransport.TTransportException(
                 type=TTransport.TTransportException.END_OF_FILE,
                 message='Connection closed')
