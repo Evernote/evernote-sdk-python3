@@ -1,9 +1,10 @@
 import os
 from setuptools import setup, find_packages
+from six import exec_
 
 constants = open('lib/evernote/edam/userstore/constants.py').read().split("\n")
 for x in [x for x in constants if x.startswith('EDAM_VERSION')]:
-    exec(x)
+    exec_(x)
 
 
 def read(fname):
@@ -25,11 +26,13 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Topic :: Software Development :: Libraries',
+        'Programming Language :: Python :: 2.7'
         'Programming Language :: Python :: 3'
     ],
     license='BSD',
     install_requires=[
         'oauthlib',
-        'requests_oauthlib'
+        'requests_oauthlib',
+        'six'
     ],
 )

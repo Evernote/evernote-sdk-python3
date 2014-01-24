@@ -4,9 +4,7 @@ import inspect
 import re
 from requests_oauthlib import OAuth1Session
 
-import urllib.error
-import urllib.parse
-import urllib.request
+from six.moves import urllib
 
 import evernote.edam.userstore.UserStore as UserStore
 import evernote.edam.notestore.NoteStore as NoteStore
