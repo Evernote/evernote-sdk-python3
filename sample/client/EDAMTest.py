@@ -7,11 +7,13 @@
 # To run (Unix):
 #   export PYTHONPATH=../../lib; python EDAMTest.py
 #
+from __future__ import print_function
 
 import hashlib
 import binascii
 import evernote.edam.userstore.constants as UserStoreConstants
 import evernote.edam.type.ttypes as Types
+import six
 
 from evernote.api.client import EvernoteClient
 
@@ -23,7 +25,7 @@ auth_token = "your developer token"
 
 if auth_token == "your developer token":
     print("Please fill in your developer token")
-    print("To get a developer token, visit " \
+    print("To get a developer token, visit "
           "https://sandbox.evernote.com/api/DeveloperToken.action")
     exit(1)
 
