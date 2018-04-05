@@ -162,6 +162,7 @@ class EDAMUserException(TException):
   )
 
   def __init__(self, errorCode=None, parameter=None,):
+    TException.__init__(self, parameter)
     self.errorCode = errorCode
     self.parameter = parameter
 
@@ -218,6 +219,9 @@ class EDAMUserException(TException):
     L = ['%s=%r' % (key, value)
       for key, value in self.__dict__.items()]
     return '%s(%s)' % (self.__class__.__name__, ', '.join(L))
+
+  def __hash__(self):
+    return hash((self.__class__, tuple(self.__dict__.items())))
 
   def __eq__(self, other):
     return isinstance(other, self.__class__) and self.__dict__ == other.__dict__
