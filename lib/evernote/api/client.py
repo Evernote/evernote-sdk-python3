@@ -156,7 +156,7 @@ class Store(object):
             if targetMethod is None:
                 return object.__getattribute__(self, name)(*args, **kwargs)
 
-            org_args = inspect.getargspec(targetMethod).args
+            org_args = inspect.getfullargspec(targetMethod).args
             if len(org_args) == len(args) + 1:
                 return targetMethod(*args, **kwargs)
             elif 'authenticationToken' in org_args:
